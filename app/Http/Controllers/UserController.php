@@ -31,14 +31,14 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'last_name' => 'required|string|max:255',
+            'age' => 'required|integer|min:0',
         ]);
 
         \App\Models\User::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'last_name' => $request->last_name,
+            'age' => $request->age,
         ]);
 
         return redirect()->route('users.index');
@@ -71,14 +71,14 @@ class UserController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8',
+            'last_name' => 'required|string|max:255',
+            'age' => 'required|integer|min:0',
         ]);
 
         $user->update([
             'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password ? bcrypt($request->password) : $user->password,
+            'last_name' => $request->last_name,
+            'age' => $request->age,
         ]);
 
         return redirect()->route('users.index');

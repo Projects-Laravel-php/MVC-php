@@ -10,7 +10,8 @@
                     <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -19,7 +20,8 @@
                         <tr>
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->age }}</td>
                             <td>
                                 <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary btn-sm">View</a>
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
